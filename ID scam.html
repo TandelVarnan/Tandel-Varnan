@@ -1,0 +1,22 @@
+import qrcode
+
+# Yahan apne Google Form ya feedback form ka URL daalein
+feedback_form_url = "https://forms.gle/your-form-link"
+
+# QR code generate karein
+qr = qrcode.QRCode(
+    version=1,
+    error_correction=qrcode.constants.ERROR_CORRECT_L,
+    box_size=10,
+    border=4,
+)
+qr.add_data(feedback_form_url)
+qr.make(fit=True)
+
+# QR code ko image me convert karein
+img = qr.make_image(fill="black", back_color="white")
+
+# QR code ko save karein
+img.save("feedback_qr.png")
+
+print("QR Code successfully generated as feedback_qr.png")
